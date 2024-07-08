@@ -48,6 +48,8 @@ RUN pip install git+https://github.com/NVlabs/tiny-cuda-nn/#subdirectory=binding
 
 RUN pip install -r requirements.txt
 
+RUN python run_env.py
+
 EXPOSE 7860
 
 ENV GRADIO_SERVER_NAME="0.0.0.0"
