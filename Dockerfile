@@ -13,17 +13,21 @@ COPY /Era3D /Era3d
 
 WORKDIR /Era3d
 
+RUN apt-get install -y wget
+
+RUN mkdir sam_pt && cd sam_pt && \
+    wget https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth && \
+    cd .. 
+
 RUN apt-get update && apt-get install -y git libgl1 libglib2.0-0 
 
 RUN apt-get install -y build-essential
-
-
 
 RUN pip install fire spaces 
 
 RUN pip install torch==2.1.2 torchvision==0.16.2 torchaudio==2.1.2 --index-url https://download.pytorch.org/whl/cu118
 
-RUN apt-get install -y wget
+
 
 RUN wget https://download.pytorch.org/whl/cu118/xformers-0.0.23.post1%2Bcu118-cp310-cp310-manylinux2014_x86_64.whl#sha256=dc5f828dbe187c1bf69d41853a55170d2506ff4c40fc0dfbea3bc7e18daed2e5
     
